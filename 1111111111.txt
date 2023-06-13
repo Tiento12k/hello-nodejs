@@ -1,0 +1,5 @@
+- viết 1 pipeline tạo 1 ứng dụng web hello world
+
+######
+1. viet 1 docker file => chay image web
+2. trong pipeline => trien khai image web
