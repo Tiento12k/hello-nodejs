@@ -1,0 +1,22 @@
+Log của hệ thống (system logs) thường được sử dụng để theo dõi hoạt động của hệ thống. Nó bao gồm thông tin về tình trạng của phần cứng (ví dụ: bật/tắt, mức năng lượng, lỗi phần cứng), hạt nhân và các tiến trình hệ thống (ví dụ: kết nối mạng, lịch sử đăng nhập, bộ nhớ, đĩa, CPU), Nó thường được sử dụng để giám sát và phân tích hiệu suất của hệ thống.
+
+Log của ứng dụng (app logs) là các thông tin được tạo ra bởi ứng dụng của bạn hoặc các service của ứng dụng. Nó bao gồm thông tin về các yêu cầu HTTP, trả về lỗi và tỷ lệ lỗi nếu các API của bạn không đáp ứng được yêu cầu, log của các service của ứng dụng, cũng như thông tin khác liên quan đến việc quản lý các nhiệm vụ của ứng dụng. Nó thường được sử dụng để giám sát và phân tích hiệu suất của ứng dụng, giúp bạn có thể nhanh chóng tìm kiếm và sửa các lỗi và nâng cấp hiệu suất của ứng dụng của mình.
+
+Sự khác biệt chính giữa Log của hệ thống và ứng dụng là giúp phân biệt trách nhiệm giữa các nhóm trong các đội phát triển và cải thiện khả năng xử lý các lỗi khó khắc phục. Bằng cách giám sát cả log của hệ thống và log của ứng dụng, bạn có thể phân tích và phát hiện các lỗi một cách dễ dàng hơn để có thể sửa chữa chúng một cách tốt nhất.
+##########################3
+
+Dưới đây là ví dụ một số đoạn logs của cả hệ thống và ứng dụng để bạn có thể hiểu rõ hơn:
+
+Log của hệ thống:
+Copy code
+Jun  8 13:10:32 web-server-01 kernel: [4324324.23324] TCP: request_sock_TCP: Possible SYN flooding on port 80. Sending cookies.
+Jun  8 13:10:34 web-server-01 kernel: [4324325.23322] TCP: request_sock_TCP: Possible SYN flooding on port 80. Sending cookies.
+Jun  8 13:10:44 web-server-01 kernel: [4324335.23323] TCP: request_sock_TCP: Possible SYN flooding on port 80. Sending cookies.
+Log của ứng dụng:
+Copy code
+2023-06-08T13:21:43Z INFO Successfully connected to database server.
+2023-06-08T13:21:45Z ERROR Failed to fetch user data from API. Status code: 404. URL: https://api.example.com/user/12345, Error: "Resource not found".
+2023-06-08T13:22:01Z INFO User successfully logged in. Username: john.doe@example.com, IP: 192.168.1.101
+Trong ví dụ 1, log của hệ thống có chứa một số thông tin liên quan đến tình trạng của mạng, ví dụ như thông báo về một tấn công SYN flooding trên cổng 80, thông tin cải thiện hiệu suất và bảo mật của hệ thống.
+
+Trong ví dụ 2, log của ứng dụng ghi lại các thông tin liên quan đến các yêu cầu API, lỗi server và đăng nhập của user. Các thông tin này giúp cho các developer hay devops có thể đánh giá hiệu suất của ứng dụng và phản hồi lại các yêu cầu từ phía khách hàng.

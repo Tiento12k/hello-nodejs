@@ -1,0 +1,17 @@
+docker run -it --name a123 --log-driver=docker-log-group ubuntu
+
+docker run -it --name a123 --log-driver=awslogs ubuntu
+
+docker run \
+    --log-driver=awslogs \
+    --log-opt awslogs-region=ap-southeast-1 \
+    --log-opt awslogs-group=docker-log-group \
+    --log-opt awslogs-datetime-format='\[%b %d, %Y %H:%M:%S\]' \
+    ...
+
+docker run -it -p 80:80 -e AWS_ACCESS_KEY_ID=AKIAWWAVL6LHHBIJVZIY -e AWS_SECRET_ACCESS_KEY=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 `
+--log-driver=awslogs --log-opt awslogs-group=docker-log-group --log-opt awslogs-region=ap-southeast-1 nginx
+
+
+
+docker run -it -p 80:80 --log-driver=awslogs --log-opt awslogs-group=docker-log-group --log-opt awslogs-region=ap-southeast-1 nginx
