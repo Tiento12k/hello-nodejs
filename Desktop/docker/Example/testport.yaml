@@ -1,0 +1,5 @@
+########### create container
+docker run -d -p 8081:80 nginx
+########### Check on website
+public IP: 192.168.1.7
+http://192.168.1.7:8081/

@@ -1,0 +1,90 @@
+172.18.32.1:8080
+docker run -it --name F1 -p 8080:80 nginx
+http://172.18.32.1:8070/
+
+##################3 Tạo volume
+docker volume create D1
+docker volume inspect D1
+
+1.##################3 Tạo container vs 1 volume có sẵn  -c2 -c3
+docker run -it --name C1 --mount source=<volumename>,target=</pathincontainer> imageID
+docker run -it --name C2 --mount source=D1,target=/home/dulieu nginx
+or
+docker run -d --name c4 -v <volumename>:</pathcontainer> nginx
+docker run -d --name c4 -v D1:/app/data nginx
+
+docker exec -it c4 bash
+
+###################### Cai Vim
+RUN apt-get update
+RUN apt-get -y install curl
+RUN apt-get -y install vim
+netstat -plnt
+<HTML>
+<BODY>
+Hello
+</BODY>
+</HTML>
+
+docker run -d --name c4 -v D1:/app/data nginx
+
+2.###################### Bind mounts -keen_maxwell-myapp
+docker run -it -v /c/Users/ADMIN/Desktop/dulieu:/myapp nginx bash
+
+3.###################### Clever burnell
+docker volume create --opt device=</pathHost> --opt type=none --opt o=bind <Volumename>
+docker volume create --opt device=/c/Users/ADMIN/Desktop/app --opt type=none --opt o=bind A1
+
+docker run -it -v <namevolume>:</pathincontainer> <image>
+docker run -it -v A1:/home/disk ubuntu 
+
+4.###################### Network bridge
+docker run -it --name B1 busybox
+docker network rm bridge
+docker network ls
+docker network inspect <network-name>
+docker attach B2
+ping google.com
+IP B2: 172.17.0.3 => ping 172.17.0.3
+ wget -o - 172.17.0.3
+docker run -it --name B2 -p 8888:80 busybox
+
+-Tạo một bridge network mới:
+docker network create <network-name>
+docker network create --driver <loai mang> <ten-mang>
+Ẽ: docker network create --driver bridge mangso1
+-Liệt kê tất cả các network trên host:
+docker network ls
+-Hiển thị thông tin chi tiết về một network:
+docker network inspect <network-name>
+-Tạo một container mới và gán cho nó một network:
+docker run --name <container-name> --network <network-name> <image-name>
+-Kết nối container với một network:
+docker network connect <network-name> <container-name>
+-Ngắt kết nối container từ một network:
+docker network disconnect <network-name> <container-name>
+-Xóa một network:
+docker network rm <network-name>
+-Sao chép một file từ host vào container:
+docker cp <file-path> <container-name>:<destination-path>
+-Sao chép một file từ container vào host:
+docker cp <container-name>:<file-path> <destination-path>
+
+############Tao network vs nhieu container
+docker network create --driver bridge mangso1
+docker network ls
+docker network connect <network-name> <container-name>
+ docker network connect mangso1 B3
+docker run -it --name <container-name> --network <network-name> <image-name>
+ docker run -it --name B34 --network mangso1 -p 9999:80 busybox
+
+############ hostnetwork
+ docker run --rm -d --network host --name my_nginx nginx
+############33
+httpd o B2 ping vao B4 khac mang va ping ra ngoai
+sao o container B1 lai ping đc google.com
+5.########################################################### AWS+DOCKER+CLOUD WATCH
+docker run -it -p 80:80 -e AWS_ACCESS_KEY_ID=AKIAWWAVL6LHHBIJVZIY -e AWS_SECRET_ACCESS_KEY=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 `
+--log-driver=awslogs --log-opt awslogs-group=docker-log-group --log-opt awslogs-region=ap-southeast-1 nginx
+
+docker run -it -p 80:80 --log-driver=awslogs --log-opt awslogs-group=docker-log-group --log-opt awslogs-region=ap-southeast-1 nginx

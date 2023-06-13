@@ -1,0 +1,22 @@
+docker run -d --name jenkins -p 9090:9090 -p 50000:50000 -v /C/Users/ADMIN/Desktop/Jenkin:/var/jenkins_home jenkins/jenkins:lts
+
+docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /C/Users/ADMIN/Desktop/Jenkin:/var/jenkins_home jenkins/jenkins:lts
+------------------------------------------------------
+
+
+
+docker run --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+
+################### lay password
+
+docker exec <contianername> cat /var/jenkins_home/secrets/initialAdminPassword
+
+9120f4b5d2cd4ba986fe2257df74631f
+ username: totien8h	
+ps: @Sun2002aoe123
+
+
+################### lay password
+
+
+ngrok authtoken 2QszseHvxVW7gvFm4IeY2BdMIoO_P13jLNHqjoKWEvSX7cwn
